@@ -47,6 +47,9 @@ RUN \
     # Create required directories
     && mkdir -p /proxy/bin /proxy/lib /proxy/action
 
+# install nim
+RUN curl https://apigcp.nimbella.io/downloads/nim/nim-install-linux.sh | bash
+
 WORKDIR /proxy
 COPY --from=builder_source /bin/proxy /bin/proxy_source
 COPY --from=builder_release /bin/proxy /bin/proxy_release
