@@ -33,6 +33,9 @@ FROM ruby:2.6
 # select the builder to use
 ARG GO_PROXY_BUILD_FROM=release
 
+# install nim
+RUN curl https://apigcp.nimbella.io/downloads/nim/nim-install-linux.sh | bash
+
 RUN mkdir -p /proxy/bin /proxy/lib /proxy/action
 WORKDIR /proxy
 COPY --from=builder_source /bin/proxy /bin/proxy_source
