@@ -48,7 +48,8 @@ RUN \
     && mkdir -p /proxy/bin /proxy/lib /proxy/action
 
 # install nim
-RUN curl https://apigcp.nimbella.io/downloads/nim/nim-install-linux.sh | bash
+ARG NIM_INSTALL_SCRIPT=https://apigcp.nimbella.io/downloads/nim/nim-install-linux.sh
+RUN curl ${NIM_INSTALL_SCRIPT} | bash
 
 WORKDIR /proxy
 COPY --from=builder_source /bin/proxy /bin/proxy_source
